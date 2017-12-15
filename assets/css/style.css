@@ -3,6 +3,14 @@
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.carousel-image {
+	width:100%;
+}
+
 #logo {
 	color: white;
+}
+
+#carousel-1 {
+	text-align: center;
 }
