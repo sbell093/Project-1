@@ -1,5 +1,6 @@
 .navbar {
-	background-color: black;
+	background: black;
+	color: white;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
@@ -47,19 +48,33 @@
 	font-size: 40px;
 }
 
-#event-panel {
-    border: 3px solid #bce3ff;
-    text-align: center;
-	float: right;
-    width: 300px;
-    padding: 10px;
+#table {
+	float: left;
+
 }
 
 #carousel-1 {
 	text-align: center;
 }
 
+#first-row {
+	background: black;
+	color: white;
+}
+
+#second-row,
+#third-row,
+#forth-row,
+#fifth-row {
+	background: #F0F0F0;
+	color: black;
+}
+
 .item {
 	height:420px;    /*height of carrosel*/
 }
+
+
+
+
 
