@@ -5,6 +5,7 @@
 
 .carousel-image {
 	width:100%;
+	margin-top:-100px;
 }
 
 #logo {
@@ -23,3 +24,8 @@
 #carousel-1 {
 	text-align: center;
 }
+
+.item {
+	height:100%;
+}
+
