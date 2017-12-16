@@ -9,47 +9,28 @@
 	margin-top:-100px ;
 }
 
-#carousel-example-generic {
-	/*height: 50%;*/
-}
-
-/*#photo1 {
-	width: 50%;
-	height: 80%;
-
-}
-
-#photo2 {
-	width: 50%;
-	height: 80%;
-}
-
-#photo3 {
-	width: 50%;
-	height: 80%;
-	
-}
-
-#photo4 {
-	width: 50%;
-	height: 80%;
-	
-}
-
-#photo5 {
-	width: 50%;
-	height: 80%;
-	
-}*/
-
 
 #logo {
 	color: white;
 	font-size: 40px;
 }
 
-#table {
-	float: left;
+
+#carousel-example-generic {
+	float: center;
+
+}
+
+
+
+.table {
+	float: center;
+	
+}
+
+.footer {
+	text-align: center;
+
 
 }
 
