@@ -2,220 +2,158 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eventi</title>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="./assets/css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eventi</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <!-- <<<<<<< HEAD -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Eventi</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
- 
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search artist, genre..">
-                    </div>
-                    <button type="Search" class="btn btn-default">Submit</button>
-                </form>
-
-  <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <!-- divider -->
-    <br>
-    <div class="container">
-    <div class="row-1">
-        <div class="col-md">
-            <table class="table .table-bordered .align-middle">
-                <thead>
-                    <tr id="first-row">
-                        <th scope="col">#</th>
-                        <th scope="col">Song Title</th>
-                        <th scope="col">Artist</th>
-                        <th scope="col">Album</th>
-                        <th scope="col">Events Near You</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="second-row">
-                        <th scope="row">1</th>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr id="third-row">
-                        <th scope="row">2</th>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr id="forth-row">
-                        <th scope="row">3</th>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                    <tr id="fifth-row">
-                        <th scope="row">4</th>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="navbar-wrapper">
+        <div class="container">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-login" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Eventi</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-login">
+                    <button id="spotify-login" class="btn btn-success navbar-btn pull-right">Login with Spotify</button>
+                    <p id="spotify-username" class="navbar-text pull-right"></p>
+                </div>
+            </nav>
         </div>
     </div>
-    <!-- CAROUSEL -->
-    <!--  Break -->
-    <br>
-    <div class="row">
-        <div class="col-md">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="5"></li>
-                </ol>
-                <!-- Wrapper for slides -->
-                <div id="carousel-1" class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div id="imageOne">
-                            <img class="carousel-image" id="photo1" src="https://media-cdn.tripadvisor.com/media/photo-s/04/7a/12/34/crescent-ballroom-front.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <h3>Crescent Ballroom</h3>
-                                <p>Track your favorite artists and never miss them live.</p>
-                            </div>
+
+    <div id="landing" class="container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div id="carousel-1" class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div id="imageOne">
+                        <img class="carousel-image" id="photo1" src="https://media-cdn.tripadvisor.com/media/photo-s/04/7a/12/34/crescent-ballroom-front.jpg"
+                            alt="...">
+                        <div class="carousel-caption">
+                            <h3>Crescent Ballroom</h3>
+                            <p>Track your favorite artists and never miss them live.</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div id="imageTwo">
-                            <img class="carousel-image" id="photo2" src="https://images1.phoenixnewtimes.com/imager/u/745xauto/9620706/van-buren-downtown-phoenix-preview-night-main-room.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <h3>The Van Buren</h3>
-                                <p>Track your favorite artists and never miss them live.</p>
-                            </div>
+                </div>
+                <div class="item">
+                    <div id="imageTwo">
+                        <img class="carousel-image" id="photo2" src="https://images1.phoenixnewtimes.com/imager/u/745xauto/9620706/van-buren-downtown-phoenix-preview-night-main-room.jpg"
+                            alt="...">
+                        <div class="carousel-caption">
+                            <h3>The Van Buren</h3>
+                            <p>Track your favorite artists and never miss them live.</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div id="imageThree">
-                            <img class="carousel-image" id="photo3" src="http://cdn.relentlessbeats.com/wp-content/uploads/2016/10/zeds-dead-marquee-161027-079-1200x800.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <h3>The Pressroom</h3>
-                                <p>Track your favorite artists and never miss them live.</p>
-                            </div>
+                </div>
+                <div class="item">
+                    <div id="imageThree">
+                        <img class="carousel-image" id="photo3" src="http://cdn.relentlessbeats.com/wp-content/uploads/2016/10/zeds-dead-marquee-161027-079-1200x800.jpg"
+                            alt="...">
+                        <div class="carousel-caption">
+                            <h3>The Pressroom</h3>
+                            <p>Track your favorite artists and never miss them live.</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div id="imageFour">
-                            <img class="carousel-image" id="photo4" src="http://monkeygoosemag.com/wp-content/uploads/2015/07/CPS_1943-2-1132x509.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <h3>Valley Bar</h3>
-                                <p>Track your favorite artists and never miss them live.</p>
-                            </div>
+                </div>
+                <div class="item">
+                    <div id="imageFour">
+                        <img class="carousel-image" id="photo4" src="http://monkeygoosemag.com/wp-content/uploads/2015/07/CPS_1943-2-1132x509.jpg"
+                            alt="...">
+                        <div class="carousel-caption">
+                            <h3>Valley Bar</h3>
+                            <p>Track your favorite artists and never miss them live.</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <div id="imageFive">
-                            <img class="carousel-image" id="photo5" src="http://cdn.relentlessbeats.com/wp-content/uploads/2015/09/Armin-van-buuren-pressroom-150926-82-1200x750.jpg" alt="...">
-                            <div class="carousel-caption">
-                                <h3>Be the first to know about concerts</h3>
-                                <p>Track your favorite artists and never miss them live.</p>
-                            </div>
+                </div>
+                <div class="item">
+                    <div id="imageFive">
+                        <img class="carousel-image" id="photo5" src="http://cdn.relentlessbeats.com/wp-content/uploads/2015/09/Armin-van-buuren-pressroom-150926-82-1200x750.jpg"
+                            alt="...">
+                        <div class="carousel-caption">
+                            <h3>Be the first to know about concerts</h3>
+                            <p>Track your favorite artists and never miss them live.</p>
                         </div>
                     </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                          </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                         <span class="sr-only">Next</span>
-                          </a>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="loggedIn" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p id="token-timer" class="text-muted">timer</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h2>Search for events</h2>
+                    <p class="lead">You can search for specific artists, or select a followed artist.</p>
+                    <div class="btn-group" role="group">
+                        <button id="show-following-artists-form" class="btn btn-default">Following Artists</button>
+                        <button id="show-artist-form" class="btn btn-default">Search artist</button>
+                    </div>
+                    <div id="following-artists" class="search-form">
+                        <div id="spotify-artist-container" class="artist-container"></div>
+                    </div>
+                    <div id="artist-search" class="search-form">
+                        <div class="input-group">
+                            <input id="artist-input" type="text" class="form-control" placeholder="Search for artist...">
+                            <span class="input-group-btn">
+                                <button id="search-artist" class="btn btn-success" type="button">Get Events!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h2>Events to check out</h2>
+                    <div id="concert-events"></div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100%; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTYwNWZlZmU0ZmMgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjA1ZmVmZTRmYyI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NjcxODc1IiB5PSIxMDUuMzI5Njg3NSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100%; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTYwNWZlZmNhMjQgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjA1ZmVmY2EyNCI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NjcxODc1IiB5PSIxMDUuMzI5Njg3NSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail"> <img alt="100%x200" data-src="holder.js/100%x200" style="height: 100%; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MjAwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTYwNWZlZmQxNjEgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNjA1ZmVmZDE2MSI+PHJlY3Qgd2lkdGg9IjI0MiIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI4OS44NjcxODc1IiB5PSIxMDUuMzI5Njg3NSI+MjQyeDIwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<footer class="footer">
-    <span class="text-muted">Eventi © 2017</span>
-</footer>
 
-
-
-   
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <script src="./assets/js/app.js"></script>
 </body>
-<!-- form box-->
-<!-- search by artist , search playlist, genre venue date 
-automatically generated features on buttom - Four sixteen that slide automatically —> link to ticketmaster 
-presentations- 10 minutes some form of slideshow, what we built, why we build it, how we built it
-
-materialize?-->
 
 </html>
