@@ -1,11 +1,10 @@
 
 // Global variables
-var spotify_client_id = "75175a4b40a547289ffd4bab03029947";
+var spotify_client_id = "92134d40a5be46bbb3926f6e43c0969d";
 var ticketMaster_key = "MA05CNrNRiMA6ysLGah2vZ8ZG4DY3Ayl";
 var access_token, expires_in, token_type;
 var user_latitude, user_longitude;
 var intervalId;
-var testInterval = 5;
 
 var params = getHashParams();
 
@@ -188,7 +187,11 @@ function renderEventResults(artistValue){
                 }
             }
             else {
+                var noResultsDiv = $("<div>");
+                noResultsDiv.addClass("no-results");
+                noResultsDiv.text("No events found!");
 
+                $("#concert-events").append(noResultsDiv);
             }
         },
         error: function (xhr, status, err) {

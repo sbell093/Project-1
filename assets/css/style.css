@@ -61,6 +61,14 @@
 	font-size: 15px !important;
 }
 
+.no-results{
+	text-align: center;
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+
 #ddlSpotifyPlaylists{
 	margin-bottom: 15px;
 }
