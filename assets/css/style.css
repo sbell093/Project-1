@@ -12,6 +12,16 @@
 	float: center;
 }
 
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+
+
 .footer {
     position: fixed;
     left: 0;
@@ -33,6 +43,11 @@
 #imageTwo {
 	position:relative;
 	top: -100px;
+}
+
+#imageFour {
+	position:relative;
+	top: 100px;
 }
 
 .item {
