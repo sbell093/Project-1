@@ -13,11 +13,26 @@
 }
 
 .footer {
-	text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: grey;
+    text-align: center;
 }
 
 #carousel-1 {
 	text-align: center;
+}
+
+#imageSix {
+	position:relative;
+	top: -50px;
+}
+
+#imageTwo {
+	position:relative;
+	top: -100px;
 }
 
 .item {
@@ -140,3 +155,5 @@
 #token-timer{
 	text-align: center;
 }
+
+
