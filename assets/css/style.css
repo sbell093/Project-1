@@ -67,8 +67,31 @@
 	font-size: 17px !important;
 }
 
+.event-name{
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+
 .event-detail{
+	margin-bottom: 5px;
 	font-size: 15px !important;
+}
+
+.event-image{
+	float: left;
+	height: 150px;
+	width: 200px;
+	margin-right: 15px;
+}
+
+.more-info-button{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.well{
+	margin-bottom: 15px;
 }
 
 .no-results{
@@ -156,6 +179,7 @@
   width: 10em;
   height: 10em;
 }
+
 .loader {
   margin: 60px auto;
   font-size: 10px;
@@ -190,4 +214,14 @@
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 640px) {
+    .event-image {
+        float: none;
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
 }

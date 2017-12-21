@@ -131,6 +131,7 @@ function renderEventResults(artistValue) {
         async: true,
         dataType: "json",
         success: function (json) {
+            console.log(json);
             $("#concert-events").empty();
 
             if (json.page.totalElements > 0) {
@@ -140,73 +141,75 @@ function renderEventResults(artistValue) {
                     var concertEvent = $("<div>");
                     concertEvent.addClass("event");
 
-                    //  Description row
-                    var eventDescriptionRow = $("<div>");
-                    eventDescriptionRow.addClass("row");
-
-                    var eventDescriptionCol = $("<div>");
-                    eventDescriptionCol.addClass("col-md-12");
-
-                    var ceDescription = $("<h3>");
-                    ceDescription.text(json._embedded.events[i].name);
-                    eventDescriptionCol.append(ceDescription);
-                    eventDescriptionRow.append(eventDescriptionCol);
-                    concertEvent.append(eventDescriptionRow);
-
-                    //  Info row
+                    //  Event Info
                     var eventInfoRow = $("<div>");
                     eventInfoRow.addClass("row");
 
                     var eventInfoCol = $("<div>");
                     eventInfoCol.addClass("col-md-12");
 
-                    var ceInfo = $("<p>");
-                    ceInfo.addClass("event-info");
-                    ceInfo.text(json._embedded.events[i].info);
-                    eventInfoCol.append(ceInfo);
-                    eventInfoRow.append(eventInfoCol);
-                    concertEvent.append(eventInfoRow);
+                    var eventImage = $("<img>");
+                    eventImage.attr("src", json._embedded.events[i].images[0].url);
+                    eventImage.addClass("event-image");
+                    eventInfoCol.append(eventImage);
 
-                    //  Details row
-                    var eventDetailsRow = $("<div>");
-                    eventDetailsRow.addClass("row");
-
-                    var eventDetailsCol1 = $("<div>");
-                    eventDetailsCol1.addClass("col-md-3");
+                    var ceDescription = $("<p>");
+                    ceDescription.addClass("event-name");
+                    ceDescription.html(json._embedded.events[i].name);
+                    eventInfoCol.append(ceDescription);
 
                     var eventStartDate = $("<p>");
                     eventStartDate.addClass("event-detail");
                     eventStartDate.html("<strong>Date:</strong> " + json._embedded.events[i].dates.start.localDate);
-                    eventDetailsCol1.append(eventStartDate);
-                    eventDetailsRow.append(eventDetailsCol1);
-
-                    var eventDetailsCol2 = $("<div>");
-                    eventDetailsCol2.addClass("col-md-3");
-
-                    var eventVenue = $("<p>");
-                    eventVenue.addClass("event-detail");
-                    eventVenue.html("<strong>Venue:</strong> " + json._embedded.events[i]._embedded.venues[0].name);
-                    eventDetailsCol2.append(eventVenue);
-                    eventDetailsRow.append(eventDetailsCol2);
-
-                    var eventDetailsCol3 = $("<div>");
-                    eventDetailsCol3.addClass("col-md-3");
+                    eventInfoCol.append(eventStartDate);
 
                     var eventLocation = $("<p>");
                     eventLocation.addClass("event-detail");
-                    eventLocation.html("<strong>Location:</strong> " + json._embedded.events[i]._embedded.venues[0].city.name + ", " + json._embedded.events[i]._embedded.venues[0].state.name);
-                    eventDetailsCol3.append(eventLocation);
-                    eventDetailsRow.append(eventDetailsCol3);
-
-                    var eventDetailsCol4 = $("<div>");
-                    eventDetailsCol4.addClass("col-md-3");
+                    eventLocation.html("<strong>Location:</strong> " + json._embedded.events[i]._embedded.venues[0].name + ", " + json._embedded.events[i]._embedded.venues[0].city.name + ", " + json._embedded.events[i]._embedded.venues[0].state.name);
+                    eventInfoCol.append(eventLocation);
 
                     var eventPrice = $("<p>");
                     eventPrice.addClass("event-detail");
                     eventPrice.html("<strong>Prices:</strong> $" + json._embedded.events[i].priceRanges[0].min + " - $" + json._embedded.events[i].priceRanges[0].max);
-                    eventDetailsCol4.append(eventPrice);
-                    eventDetailsRow.append(eventDetailsCol4);
-                    concertEvent.append(eventDetailsRow);
+                    eventInfoCol.append(eventPrice);
+
+                    eventInfoRow.append(eventInfoCol);
+                    concertEvent.append(eventInfoRow);
+
+                    //  More Info
+                    var eventMoreInfoRow = $("<div>");
+                    eventMoreInfoRow.addClass("row");
+
+                    var eventMoreInfoCol = $("<div>");
+                    eventMoreInfoCol.addClass("col-md-12");
+
+                    var moreInfoButton = $("<a>");
+                    moreInfoButton.attr("role", "button");
+                    moreInfoButton.addClass("btn btn-primary more-info-button");
+                    moreInfoButton.attr("data-toggle", "collapse");
+                    moreInfoButton.attr("aria-expanded", "false");
+                    moreInfoButton.attr("aria-controls", "event-" + json._embedded.events[i].id);
+                    moreInfoButton.attr("href", "#event-" + json._embedded.events[i].id);
+                    moreInfoButton.text("More Info");
+                    eventMoreInfoCol.append(moreInfoButton);
+
+                    var moreInfoSection = $("<div>");
+                    moreInfoSection.attr("id", "event-" + json._embedded.events[i].id);
+                    moreInfoSection.addClass("collapse");
+
+                    var ceInfo = $("<div>");
+                    ceInfo.addClass("well");
+                    if(json._embedded.events[i].info){
+                        ceInfo.text(json._embedded.events[i].info);
+                    }
+                    else{
+                        ceInfo.text("Not available");
+                    }
+                    moreInfoSection.append(ceInfo);
+
+                    eventMoreInfoCol.append(moreInfoSection);
+                    eventMoreInfoRow.append(eventMoreInfoCol);
+                    concertEvent.append(eventMoreInfoRow);
 
                     //  Links Row
                     var eventLinksRow = $("<div>");
