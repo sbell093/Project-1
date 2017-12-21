@@ -13,25 +13,29 @@
 </head>
 
 <body>
-    <div class="navbar-wrapper">
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
-            <nav class="navbar navbar-inverse navbar-static-top">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-login" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Eventi</a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-login">
-                    <button id="spotify-login" class="btn btn-success navbar-btn pull-right">Login with Spotify</button>
-                    <p id="spotify-username" class="navbar-text pull-right"></p>
-                </div>
-            </nav>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-login" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Eventi</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-login">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <p id="spotify-username" class="navbar-text"></p>
+                    </li>
+                    <li>
+                        <button id="spotify-login" class="btn btn-success navbar-btn">Login with Spotify</button>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
     <div id="landing" class="container">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -152,38 +156,45 @@
 
     <div id="loggedIn" class="container">
         <div class="row">
-            <div class="col-md-12">
-                <p id="token-timer" class="text-muted">timer</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h2>Search for events</h2>
-                    <p class="lead">You can search for specific artists, or select a followed artist.</p>
-                    <div class="btn-group" role="group">
-                        <button id="show-following-artists-form" class="btn btn-default">Following Artists</button>
-                        <button id="show-artist-form" class="btn btn-default">Search artist</button>
+            <div class="col-md-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <p class="panel-title pull-left">Following Artists</p>
+                        <button id="refresh-fa" type="button" class="btn btn-success btn-sm pull-right">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                            Refresh
+                        </button>
                     </div>
-                    <div id="following-artists" class="search-form">
-                        <div id="spotify-artist-container" class="artist-container"></div>
+                    <div class="panel-body fa-body">
+                        <div id="spotify-artist-container"></div>
                     </div>
-                    <div id="artist-search" class="search-form">
-                        <div class="input-group">
-                            <input id="artist-input" type="text" class="form-control" placeholder="Search for artist...">
-                            <span class="input-group-btn">
-                                <button id="search-artist" class="btn btn-success" type="button">Get Events!</button>
-                            </span>
-                        </div>
+                    <div class="panel-footer">
+                        <p id="token-timer" class="text-muted">timer</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h2>Events to check out</h2>
-                    <div id="concert-events"></div>
+            <div class="col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <p class="panel-title pull-left">Events In Your Area</p>
+                        <button id="search-artist" type="button" class="btn btn-default btn-sm pull-right" data-toggle="collapse" data-target="#artist-search"
+                            aria-expanded="false" aria-controls="artist-search">
+                            <span class="glyphicon glyphicon-search"></span>
+                            Search Artist
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div id="artist-search" class="search-form collapse" aria-expanded="false">
+                            <div class="input-group">
+                                <input id="artist-input" type="text" class="form-control" placeholder="Search for artist...">
+                                <span class="input-group-btn">
+                                    <button id="search-events" class="btn btn-success" type="button">Get Events!</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="loading-spinner" class="loader" style="display:none;"></div>
+                        <div id="concert-events"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -197,6 +208,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js" integrity="sha256-0SGl1PJNDyJwcV5T+weg2zpEMrh7xvlwO4oXgvZCeZk="
         crossorigin="anonymous"></script>
     <script src="./assets/js/app.js"></script>
 </body>

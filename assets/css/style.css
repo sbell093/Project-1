@@ -58,18 +58,13 @@
 	text-align: center;
 }
 
-#concert-events{
-	border-top: 1px solid #d5d5d5;
-	margin-top: 25px;
-	padding-top: 25px;
-}
-
 .event{
 	text-align: left;
 	padding: 15px;
 	border: 1px solid #d5d5d5;
 	border-radius: 5px;
 	margin-bottom: 20px;
+	background-color: #EEE;
 }
 
 .event-links{
@@ -99,76 +94,115 @@
 	font-size: 18px;
 }
 
-#ddlSpotifyPlaylists{
-	margin-bottom: 15px;
-}
-
-.search-container{
-	background-color: #eee;
-	border-radius: 6px;
-}
-
 .search-form{
-	border-top: 1px solid #d5d5d5;
-	text-align: left;
-	padding-top: 30px;
-	margin-top: 30px;
-}
-
-.search-form .table th{
-	background: #000;
-	color: #fff;
-}
-
-.search-form .table td{
-	background: #F0F0F0;
-	color: #000;
-}
-
-.table{
-	margin-bottom: 0;
-}
-
-.navbar-wrapper{
-	margin-top: 20px;
-}
-
-.navbar-wrapper .navbar{
-	border-radius: 5px;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #D5D5D5;
 }
 
 .navbar button{
 	margin-right: 15px;
 }
 
+.artist{
+	border: 1px solid #D5D5D5;
+	border-radius: 0;
+	height: 132px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.artist-name{
+	font-size: 16px;
+	font-weight: bold;
+	margin: 5px 0;
+}
+
+.artist-detail{
+	font-size: 13px;
+	margin: 2px 0;
+}
+
 .artist-image{
 	float: left;
-	width: 150px;
-	height: 150px;
+	width: 130px;
+	height: 130px;
 	margin-right: 10px;
 }
 
-.artist h3{
-	margin-bottom: 32px;
-}
-
-.artist p{
-	font-size: 14px;
-	margin-bottom: 0;
-}
-
 .artist button{
-	margin-top: 18px;
-}
-
-.artist-container{
-	max-height: 400px;
-	overflow-x: hidden;
-	overflow-y: auto;
+	position: absolute;
+	bottom: 0;
+	left: 130px;
+	width: calc(100% - 130px);
+	border-radius: 0;
 }
 
 #token-timer{
 	text-align: center;
 }
 
+.panel-title{
+	padding-top: 5px;
+}
 
+.panel-button{
+	margin-top: 15px;
+}
+
+.fa-body{
+	max-height: 800px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(10,255,0, 0.2);
+  border-right: 1.1em solid rgba(10,255,0, 0.2);
+  border-bottom: 1.1em solid rgba(10,255,0, 0.2);
+  border-left: 1.1em solid #1DB954;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

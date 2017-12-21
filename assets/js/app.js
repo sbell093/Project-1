@@ -33,8 +33,8 @@ if (access_token) {
             $('#loggedin').show();
             $("#spotify-username").show();
             $("#spotify-login").hide();
-            $("#following-artits").hide();
-            $("#artist-search").hide();
+
+            renderFollowingArtists();
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -42,15 +42,17 @@ if (access_token) {
                     user_longitude = position.coords.longitude;
                 });
             }
+        },
+        error: function(error){
+            $("#loggedIn").hide();
+            $("#spotify-username").hide();
         }
     });
 }
 else {
     $('#loggedIn').hide();
     $('#landing').show();
-    $("#following-artists").hide();
-    $("#artist-search").hide();
-    $("#concert-events").hide();
+    $("#spotify-login").show();
     $("#spotify-username").hide();
 }
 
@@ -65,7 +67,58 @@ function getHashParams() {
     return hashParams;
 }
 
-function renderEventResults(artistValue){
+function renderFollowingArtists() {
+    $.ajax({
+        url: "https://api.spotify.com/v1/me/following?type=artist&limit=20",
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+        },
+        success: function (response) {
+            $("#spotify-artist-container").empty();
+            var artistContainer = $("#spotify-artist-container");
+
+            for (var i = 0; i < response.artists.items.length; i++) {
+                var artistContent = $("<div>");
+                artistContent.addClass("artist");
+
+                var artistImg = $("<img>");
+                artistImg.addClass("artist-image");
+                artistImg.attr("src", response.artists.items[i].images[0].url);
+                artistContent.append(artistImg);
+
+                var artistName = $("<p>");
+                artistName.addClass("artist-name");
+                artistName.text(response.artists.items[i].name);
+                artistContent.append(artistName);
+
+                var artistGenre = $("<p>");
+                artistGenre.addClass("artist-detail");
+                artistGenre.html("<strong>Genre:</strong> " + response.artists.items[i].genres[0]);
+                artistContent.append(artistGenre);
+
+                var artistPopularity = $("<p>");
+                artistPopularity.addClass("artist-detail");
+                artistPopularity.html("<strong>Popularity:</strong> " + response.artists.items[i].popularity);
+                artistContent.append(artistPopularity);
+
+                var artistButton = $("<button>");
+                artistButton.attr("data-id", response.artists.items[i].id);
+                artistButton.attr("data-name", response.artists.items[i].name);
+                artistButton.addClass("btn btn-success artist-button");
+                artistButton.text("Select");
+                artistContent.append(artistButton);
+                artistContainer.append(artistContent);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+function renderEventResults(artistValue) {
+    $("#loading-spinner").show();
+
     $.ajax({
         type: "GET",
         url: "https://app.ticketmaster.com/discovery/v2/events.json?" + $.param({
@@ -198,24 +251,31 @@ function renderEventResults(artistValue){
             console.log(err);
         }
     });
+
+    $("#loading-spinner").hide();
 }
 
-function tokenExpirationTimer(){
+function tokenExpirationTimer() {
     expires_in--;
 
-    if(expires_in === 0){
+    if (expires_in === 0) {
         access_token = undefined;
         token_type = undefined;
         expires_in = 0;
         alert("Token has expired!");
         window.location.href = window.location.origin;
     }
-    else{
+    else {
         $("#token-timer").text("Token expires in " + expires_in);
     }
 }
 
 //  Events
+
+$("#refresh-fa").on("click", function () {
+    renderFollowingArtists();
+});
+
 $("#spotify-login").on("click", function () {
     event.preventDefault();
 
@@ -229,82 +289,14 @@ $("#spotify-login").on("click", function () {
     window.location = authUrl;
 });
 
-$("#show-following-artists-form").on("click", function () {
-    $("#show-artist-form").removeClass("btn-success");
-    $(this).removeClass("btn-default");
-    $(this).addClass("btn-success");
-    $("#following-artists").show();
-    $("#artist-search").hide();
-
-    $.ajax({
-        url: "https://api.spotify.com/v1/me/following?type=artist&limit=20",
-        headers: {
-            'Authorization': 'Bearer ' + access_token
-        },
-        success: function (response) {
-            $("#spotify-artist-container").empty();
-            var artistContainer = $("#spotify-artist-container");
-
-            for (var i = 0; i < response.artists.items.length; i += 2) {
-                var artistRow = $("<div>");
-                artistRow.addClass("row");
-
-                for (var j = i; j < i + 2; j++) {
-                    var artistCol = $("<div>");
-                    artistCol.addClass("col-md-6");
-
-                    var artistContent = $("<div>");
-                    artistContent.addClass("artist");
-
-                    var artistImg = $("<img>");
-                    artistImg.addClass("artist-image");
-                    artistImg.attr("src", response.artists.items[j].images[0].url);
-                    artistContent.append(artistImg);
-
-                    var artistName = $("<h3>");
-                    artistName.text(response.artists.items[j].name);
-                    artistContent.append(artistName);
-
-                    var artistGenre = $("<p>");
-                    artistGenre.html("<strong>Genre:</strong> " + response.artists.items[j].genres[0]);
-                    artistContent.append(artistGenre);
-
-                    var artistPopularity = $("<p>");
-                    artistPopularity.html("<strong>Popularity:</strong> " + response.artists.items[j].popularity);
-                    artistContent.append(artistPopularity);
-
-                    var artistButton = $("<button>");
-                    artistButton.attr("data-id", response.artists.items[j].id);
-                    artistButton.attr("data-name", response.artists.items[j].name);
-                    artistButton.addClass("btn btn-success artist-button");
-                    artistButton.text("Select");
-                    artistContent.append(artistButton);
-
-                    artistCol.append(artistContent);
-                    artistRow.append(artistCol);
-                }
-
-                artistContainer.append(artistRow);
-            }
-        }
-    });
-});
-
-$("#show-artist-form").on("click", function () {
-    $("#show-following-artists-form").removeClass("btn-success");
-    $(this).removeClass("btn-default");
-    $(this).addClass("btn-success");
-    $("#artist-search").show();
-    $("#following-artists").hide();
-});
-
 $("#spotify-artist-container").on("click", ".artist-button", function () {
     $("#concert-events").empty();
     var artistToSearchFor = $(this).attr("data-name");
+    $("#artist-input").val(artistToSearchFor);
     renderEventResults(artistToSearchFor);
 });
 
-$("#search-artist").on("click", function(){
+$("#search-events").on("click", function () {
     var artistToSearchFor = $("#artist-input").val().trim();
     renderEventResults(artistToSearchFor);
 });
