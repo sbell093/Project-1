@@ -30,7 +30,7 @@
                         <p id="spotify-username" class="navbar-text"></p>
                     </li>
                     <li>
-                        <button id="spotify-login" class="btn btn-success navbar-btn">Login with Spotify</button>
+                        <button id="spotify-login" class="btn btn-success navbar-btn spotify-login-button">Login with Spotify</button>
                     </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
                         <img class="carousel-image" src="https://images1.phoenixnewtimes.com/imager/u/745xauto/9620706/van-buren-downtown-phoenix-preview-night-main-room.jpg"
                             alt="...">
                         <div class="carousel-caption">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -73,16 +73,15 @@
                         <img class="carousel-image" src="http://cdn.relentlessbeats.com/wp-content/uploads/2016/10/zeds-dead-marquee-161027-079-1200x800.jpg"
                             alt="...">
                         <div class="carousel-caption">
-                           
+
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div id="imageFour">
-                        <img class="carousel-image" src="http://monkeygoosemag.com/wp-content/uploads/2015/07/CPS_1943-2-1132x509.jpg"
-                            alt="...">
+                        <img class="carousel-image" src="http://monkeygoosemag.com/wp-content/uploads/2015/07/CPS_1943-2-1132x509.jpg" alt="...">
                         <div class="carousel-caption">
-                           
+
                         </div>
                     </div>
                 </div>
@@ -91,7 +90,7 @@
                         <img class="carousel-image" src="http://cdn.relentlessbeats.com/wp-content/uploads/2015/09/Armin-van-buuren-pressroom-150926-82-1200x750.jpg"
                             alt="...">
                         <div class="carousel-caption">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -100,7 +99,7 @@
                         <img class="carousel-image" src="http://cdn.relentlessbeats.com/wp-content/uploads/2016/10/zeds-dead-marquee-161027-078-1200x750.jpg"
                             alt="...">
                         <div class="carousel-caption">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -116,15 +115,14 @@
             </div>
         </div>
     </div>
-
-   
-
     <div id="loggedIn" class="container">
         <div class="row">
             <div class="col-md-5">
-                <div class="panel panel-default">
+                <div class="panel panel-default artist-panel">
                     <div class="panel-heading clearfix">
-                        <p class="panel-title pull-left">Following Artists</p>
+                        <p class="panel-title pull-left">Following Artists
+                            <span id="artist-count" class="badge"></span>
+                        </p>
                         <button id="refresh-fa" type="button" class="btn btn-success btn-sm pull-right">
                             <span class="glyphicon glyphicon-refresh"></span>
                             Refresh
@@ -165,8 +163,25 @@
         </div>
     </div>
 
-    <div class="footer">
-    <p>Eventi © 2017</p>
+    <div class="footer">&copy; Eventi 2017</div>
+
+    <div id="token-expired-modal" class="modal fade animation-target" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Token Expired</h4>
+                </div>
+                <div id="token-expired-content" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default cancel-button" data-dismiss="modal">Close</button>
+                    <button id="spotify-login-2" type="button" class="btn btn-success spotify-login-button">Login</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -174,7 +189,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js" integrity="sha256-0SGl1PJNDyJwcV5T+weg2zpEMrh7xvlwO4oXgvZCeZk="
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js" integrity="sha256-/As5lS2upX/fOCO/h/5wzruGngVW3xPs3N8LN4FkA5Q="
         crossorigin="anonymous"></script>
     <script src="./assets/js/app.js"></script>
 </body>

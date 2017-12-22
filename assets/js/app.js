@@ -3,6 +3,7 @@
 var spotify_client_id = "92134d40a5be46bbb3926f6e43c0969d";
 var ticketMaster_key = "MA05CNrNRiMA6ysLGah2vZ8ZG4DY3Ayl";
 var access_token, expires_in, token_type;
+var token_expires_date;
 var user_latitude, user_longitude;
 var intervalId;
 
@@ -19,7 +20,7 @@ if (access_token) {
             'Authorization': token_type + ' ' + access_token
         },
         success: function (response) {
-            $("#token-timer").text("Token expires in " + expires_in);
+            token_expires_date = moment().add(expires_in, "seconds");
             intervalId = setInterval(tokenExpirationTimer, 1000);
 
             spotify_userid = response.id;
@@ -74,7 +75,9 @@ function renderFollowingArtists() {
             'Authorization': 'Bearer ' + access_token
         },
         success: function (response) {
+            console.log(response);
             $("#spotify-artist-container").empty();
+            $("#artist-count").text(response.artists.total);
             var artistContainer = $("#spotify-artist-container");
 
             for (var i = 0; i < response.artists.items.length; i++) {
@@ -139,7 +142,7 @@ function renderEventResults(artistValue) {
 
                 for (var i = 0; i < json._embedded.events.length; i++) {
                     var concertEvent = $("<div>");
-                    concertEvent.addClass("event");
+                    concertEvent.addClass("event animation-target");
 
                     //  Event Info
                     var eventInfoRow = $("<div>");
@@ -170,7 +173,12 @@ function renderEventResults(artistValue) {
 
                     var eventPrice = $("<p>");
                     eventPrice.addClass("event-detail");
-                    eventPrice.html("<strong>Prices:</strong> $" + json._embedded.events[i].priceRanges[0].min + " - $" + json._embedded.events[i].priceRanges[0].max);
+                    if(json._embedded.events[i].priceRanges){
+                        eventPrice.html("<strong>Prices:</strong> $" + json._embedded.events[i].priceRanges[0].min + " - $" + json._embedded.events[i].priceRanges[0].max);
+                    }
+                    else{
+                        eventPrice.html("<strong>Prices:</strong> N/A");
+                    }
                     eventInfoCol.append(eventPrice);
 
                     eventInfoRow.append(eventInfoCol);
@@ -229,7 +237,12 @@ function renderEventResults(artistValue) {
                     eventLinks.append(ticketMasterLink);
 
                     var seatMapLink = $("<a>");
-                    seatMapLink.attr("href", json._embedded.events[i].seatmap.staticUrl);
+                    if(json._embedded.events[i].seatmap){
+                        seatMapLink.attr("href", json._embedded.events[i].seatmap.staticUrl);
+                    }
+                    else{
+                        seatMapLink.attr("href", "#");
+                    }
                     seatMapLink.attr("target", "_blank");
                     seatMapLink.addClass("btn btn-default");
                     seatMapLink.text("Seat Map");
@@ -265,11 +278,12 @@ function tokenExpirationTimer() {
         access_token = undefined;
         token_type = undefined;
         expires_in = 0;
-        alert("Token has expired!");
-        window.location.href = window.location.origin;
-    }
-    else {
-        $("#token-timer").text("Token expires in " + expires_in);
+        clearInterval(this.intervalId);
+
+        var tokenExpiredMessage = $("<p>");
+        tokenExpiredMessage.text("Your token has expired!");
+        $("#token-expired-content").append(tokenExpiredMessage);
+        $("#token-expired-modal").modal("show");
     }
 }
 
@@ -279,17 +293,25 @@ $("#refresh-fa").on("click", function () {
     renderFollowingArtists();
 });
 
-$("#spotify-login").on("click", function () {
+$(".spotify-login-button").on("click", function () {
     event.preventDefault();
+
+    $("#token-expired-modal").modal("hide");
 
     var authUrl = "https://accounts.spotify.com/authorize?" + $.param({
         "client_id": spotify_client_id,
         "response_type": "token",
-        "redirect_uri": window.location.href,
+        "redirect_uri": window.location.origin,
         "scope": "user-follow-read"
     });
 
     window.location = authUrl;
+});
+
+$(".cancel-button").on("click", function(){
+    $("#token-expired-modal").modal("hide");
+
+    window.location.href = window.location.origin;
 });
 
 $("#spotify-artist-container").on("click", ".artist-button", function () {
