@@ -301,7 +301,7 @@ $(".spotify-login-button").on("click", function () {
     var authUrl = "https://accounts.spotify.com/authorize?" + $.param({
         "client_id": spotify_client_id,
         "response_type": "token",
-        "redirect_uri": window.location.origin + "/",
+        "redirect_uri": "https://sbell093.github.io/Project-1/",
         "scope": "user-follow-read"
     });
 
@@ -311,7 +311,7 @@ $(".spotify-login-button").on("click", function () {
 $(".cancel-button").on("click", function(){
     $("#token-expired-modal").modal("hide");
 
-    window.location.href = window.location.origin + "/";
+    window.location.href = "https://sbell093.github.io/Project-1/";
 });
 
 $("#spotify-artist-container").on("click", ".artist-button", function () {
